@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const MovieDetail = (props) => {
   const returnBack = () => {
     props.history.replace("/movies");
