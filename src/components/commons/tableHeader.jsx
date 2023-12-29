@@ -1,6 +1,6 @@
 import { Component } from "react";
-import sortAsc from '../assets/icons/sortAsc.svg';
-import sortDesc from '../assets/icons/sortDesc.svg';
+import sortAsc from '../../assets/icons/sortAsc.svg';
+import sortDesc from '../../assets/icons/sortDesc.svg';
 
 class TableHeader extends Component {
   raiseSort = (column) => {

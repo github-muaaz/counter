@@ -1,11 +1,15 @@
 import { Component } from "react";
 import likeFull from "../assets/icons/heart.svg";
 import like from "../assets/icons/heart-outline.svg";
-import Table from "./table";
+import Table from "./commons/table";
+import { Link } from "react-router-dom";
 
 class MoviesTable extends Component {
   columns = [
-    { path: "title", label: "Title" },
+    {
+       label: "Title",
+      content: (item) => <Link to={`/movies/${item._id}`}>{item.title}</Link>,
+    },
     { path: "genre.name", label: "Genre" },
     { path: "numberInStock", label: "Stock" },
     { path: "dailyRentalRate", label: "Rate" },

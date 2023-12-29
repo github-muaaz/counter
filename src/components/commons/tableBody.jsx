@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import _ from "lodash";
+import { Link } from "react-router-dom";
 
 class TableBody extends Component {
   renderCall = (item, column) => {
@@ -10,7 +11,7 @@ class TableBody extends Component {
 
   createKey = (item, column) => {
     return item + (column.path || column.key);
-  }
+  };
 
   render() {
     const { data, columns } = this.props;
@@ -20,7 +21,9 @@ class TableBody extends Component {
         {data.map((item) => (
           <tr key={item._id}>
             {columns.map((column) => (
-              <td key={this.createKey(item, column)}>{this.renderCall(item, column)}</td>
+              <td key={this.createKey(item, column)}>
+                  {this.renderCall(item, column)}
+              </td>
             ))}
           </tr>
         ))}

@@ -1,9 +1,9 @@
-import { getMovies } from "./utils/fakeMovieService";
+import { getMovies } from "../utils/fakeMovieService";
 import React, { Component } from "react";
-import Pagination from "./components/pagination";
-import { paginate } from "./utils/util";
-import { getGenres } from "./utils/fakeGenreService";
-import MoviesTable from "./components/moviesTable";
+import Pagination from "./commons/pagination";
+import { paginate } from "../utils/util";
+import { getGenres } from "../utils/fakeGenreService";
+import MoviesTable from "./moviesTable";
 import _ from 'lodash';
 
 class Movie extends Component {
