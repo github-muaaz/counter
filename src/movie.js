@@ -4,6 +4,7 @@ import Pagination from "./components/pagination";
 import { paginate } from "./utils/util";
 import { getGenres } from "./utils/fakeGenreService";
 import MoviesTable from "./components/moviesTable";
+import _ from 'lodash';
 
 class Movie extends Component {
   state = {
@@ -12,6 +13,7 @@ class Movie extends Component {
     currentPage: 1,
     genres: getGenres(),
     currentGenre: 0,
+    sortColumn: {column: 'title', orderBy: 'asc'}
   };
 
   handleDelete = (movieId) => {
@@ -20,7 +22,7 @@ class Movie extends Component {
     this.setState({ movies });
   };
 
-  onLiked = (id) => {
+  handleLiked = (id) => {
     this.setState(
       this.state.movies.map((m) => {
         if (m._id === id) m.liked = !m.liked;
@@ -38,25 +40,43 @@ class Movie extends Component {
     this.setState({ currentGenre: id, currentPage: 1 });
   };
 
-  render() {
+  handleSort = (sortColumn) => {
+    this.setState({sortColumn})
+  }
+
+  getPagedData = () => {
     const {
       pageSize,
       currentPage,
       movies: allMovies,
-      genres,
       currentGenre,
+      sortColumn,
     } = this.state;
 
-    const filteredMovies =
+    const filtered =
       currentGenre === 0
         ? allMovies
         : allMovies.filter((m) => m.genre._id === currentGenre);
 
-    const length = filteredMovies.length;
+    const sorted = _.orderBy(filtered, [sortColumn.column], [sortColumn.orderBy])
 
-    if (length <= 0) return <h1>There are no movies in database</h1>;
+    const movies = paginate(sorted, currentPage, pageSize);
 
-    const movies = paginate(filteredMovies, currentPage, pageSize);
+    return {totalCount: filtered.length, data: movies};
+  }
+
+  render() {
+    const {
+      pageSize,
+      currentPage,
+      genres,
+      currentGenre,
+      sortColumn,
+    } = this.state;
+
+    const {totalCount, data: movies} = this.getPagedData();
+
+    if (totalCount <= 0) return <h1>There are no movies in database</h1>;
 
     return (
       <React.Fragment>
@@ -91,16 +111,18 @@ class Movie extends Component {
             </div>
 
             <div className="col">
-              <h1 className="m-5">Showing {length} movies in database</h1>
+              <h1 className="m-5">Showing {totalCount} movies in database</h1>
 
               <MoviesTable
                 movies={movies}
-                onLiked={this.onLiked}
+                sortColumn={sortColumn}
+                onLiked={this.handleLiked}
                 onDelete={this.handleDelete}
+                onSort={this.handleSort}
               />
 
               <Pagination
-                itemsCount={length}
+                itemsCount={totalCount}
                 pageSize={pageSize}
                 currentPage={currentPage}
                 onPageChange={this.handlePage}
