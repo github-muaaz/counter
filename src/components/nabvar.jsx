@@ -4,7 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
             Vidly
@@ -32,6 +32,9 @@ class Navbar extends Component {
               </NavLink>
               <NavLink to="/rentals" className="nav-item nav-link">
                 Rentals
+              </NavLink>
+              <NavLink to="/login" className="nav-item nav-link">
+                Login
               </NavLink>
             </div>
           </div>
