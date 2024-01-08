@@ -8,6 +8,8 @@ import NotFound from "./components/commons/not-found";
 import Home from "./components/home";
 import MovieDetail from "./components/commons/movieDetail";
 import LoginForm from "./components/commons/loginForm";
+import RegisterForm from "./components/commons/registerForm";
+import MovieForm from "./components/commons/movieForm";
 
 class App extends Component {
   render() {
@@ -19,7 +21,8 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/login" exact component={LoginForm} />
-            <Route path="/movies/:id" component={MovieDetail} />
+            <Route path="/register" exact component={RegisterForm} />
+            <Route path="/movies/:id" component={MovieForm} />
             <Route path="/movies" component={Movie} />
             <Route path="/customers" component={Customers} />
             <Route path="/rentals" component={Rentals} />

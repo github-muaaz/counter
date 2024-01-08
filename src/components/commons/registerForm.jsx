@@ -1,40 +1,40 @@
 import Joi from "joi-browser";
 import Form from "./form";
 
-class LoginForm extends Form {
+class RegisterForm extends Form {
   state = {
     data: {
       username: "",
       password: "",
+      name: "",
     },
     errors: {},
   };
 
   schema = {
-    username: Joi.string().required().label("Username"),
-    password: Joi.string().required().label("Password"),
+    username: Joi.string().label("Username").required().email(),
+    password: Joi.string().label("Password").required().min(5),
+    name: Joi.string().label("Name").required(),
   };
 
   doSubmit = () => {
-    console.log("submitted");
-  };
+    alert('submitted')
+  }
 
   render() {
-
     return (
       <div>
-        <h1>Login</h1>
-
+        <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("username", "Username")}
-
           {this.renderInput("password", "Password", "password")}
+          {this.renderInput("name", "Name")}
 
-          {this.renderButton("Login")}
+          {this.renderButton("Register")}
         </form>
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default RegisterForm;
