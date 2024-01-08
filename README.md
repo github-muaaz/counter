@@ -1,6 +1,8 @@
 # Vidly App 
-## table-sorting-filtering-deleting-like-pagination-router
 
+link for netlify-deployment https://vidly-muaaz.netlify.app
+
+## table-sorting-filtering-deleting-like-pagination-router
 
 # Getting Started with Create React App
 
