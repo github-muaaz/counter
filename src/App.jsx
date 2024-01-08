@@ -6,7 +6,6 @@ import Customers from "./components/customers";
 import Rentals from "./components/rentals";
 import NotFound from "./components/commons/not-found";
 import Home from "./components/home";
-import MovieDetail from "./components/commons/movieDetail";
 import LoginForm from "./components/commons/loginForm";
 import RegisterForm from "./components/commons/registerForm";
 import MovieForm from "./components/commons/movieForm";

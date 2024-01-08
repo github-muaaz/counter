@@ -8,6 +8,4 @@ const Input = ({ name, label, error, ...rest }) => {
   );
 };
 
-{
-}
 export default Input;
