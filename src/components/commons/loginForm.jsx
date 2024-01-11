@@ -1,5 +1,6 @@
 import Joi from "joi-browser";
 import Form from "./form";
+import * as userServices from "../../services/userService";
 
 class LoginForm extends Form {
   state = {
@@ -16,7 +17,18 @@ class LoginForm extends Form {
   };
 
   doSubmit = () => {
-    console.log("submitted");
+    console.log("aaa")
+    // try{
+    //   userServices.register(this.state.data)
+    // } catch(ex){
+    //   if(ex.response && ex.response.status === 400){
+    //     const errors = {...this.state.errors};
+    //     errors.username = ex.response.data;
+
+    //     console.log(ex.response.data);
+    //     this.setState({errors});
+    //   }
+    // }
   };
 
   render() {
