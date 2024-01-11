@@ -114,6 +114,8 @@ class Movie extends Component {
 
     // if (totalCount <= 0) return <h1>There are no movies in database</h1>;
 
+    const { user } = this.props;
+
     return (
       <React.Fragment>
         <div className="container">
@@ -147,9 +149,11 @@ class Movie extends Component {
             </div>
 
             <div className="col-9">
-              <Link to={"/movies/new"} className="btn btn-primary mt-5 mb-3">
-                Add Movie
-              </Link>
+              {!user && (
+                <Link to={"/movies/new"} className="btn btn-primary mt-5 mb-3">
+                  Add Movie
+                </Link>
+              )}
 
               <h3 className="mb-4">Showing {totalCount} movies in database</h3>
 
